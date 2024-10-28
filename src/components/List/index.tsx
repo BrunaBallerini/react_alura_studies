@@ -1,3 +1,5 @@
+import './style.scss'
+
 function ListComponent() {
     const tarefas = [{
         tarefa: 'React',
@@ -7,11 +9,11 @@ function ListComponent() {
         tempo: '01:00:00'
     }]
     return (
-        <aside>
+        <aside className='listaTarefas'>
             <h2>Estudos do dia</h2>
             <ul>
                 {tarefas.map((item, index) => (
-                    <li key={index}>
+                    <li className='item' key={index}>
                         <h3>{item.tarefa}</h3>
                         <span>{item.tempo}</span>
                     </li>
