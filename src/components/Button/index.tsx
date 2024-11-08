@@ -1,13 +1,12 @@
-import React from "react";
 import style from './Button.module.scss'
 
-class Button extends React.Component<{ texto: string }> {
+function Button(props: { textButton: any; onClick: any; }) {
+    const { textButton, onClick } = props;
 
-    render() {
-        return (
-            <button className={style.botao}>{this.props.texto}</button>
-        )
-    }
+
+    return (
+        <button className={style.botao} onClick={onClick}>{textButton}</button>
+    )
 }
 
 export default Button;
