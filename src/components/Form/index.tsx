@@ -1,8 +1,14 @@
-import React from "react"
+import React, { useState } from "react"
 import Button from "../Button"
 import style from './Form.module.scss'
 
 function Form() {
+    const [tarefas, setTarefas] = useState(
+        [{
+            tarefa: '',
+            tempo: '00:00:00'
+        }])
+
     return (
         <form className={style.novaTarefa}>
             <div className={style.inputContainer}>
@@ -21,6 +27,8 @@ function Form() {
                     type="time"
                     step="1"
                     name="tempo"
+                    value={tarefas[0].tempo}
+                    onChange={evento => setTarefas([{ ...tarefas[0], tempo: evento.target.value }])}
                     id="tempo"
                     min="00:00:00"
                     max="01:30:00"
@@ -28,7 +36,8 @@ function Form() {
                 />
             </div>
             <Button
-                texto='Adicionar'
+                textButton="Login"
+                onClick={() => { }}
             />
         </form>
     )

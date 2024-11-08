@@ -9,7 +9,7 @@ function timerComponent() {
             <div className={style.relogioWrapper}>
                 <Clock />
             </div>
-            <Button texto='Iniciar' />
+            <Button textButton='Iniciar' onClick={() => { }} />
         </div>
     )
 }
