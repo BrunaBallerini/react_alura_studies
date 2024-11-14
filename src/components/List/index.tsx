@@ -13,11 +13,12 @@ function ListComponent({ tarefas, selecionaTarefa }: Props) {
         <aside className={style.listaTarefas}>
             <h2>Estudos do dia</h2>
             <ul>
-                {tarefas.map((item, index) => (
+                {tarefas.map(item => (
                     <Item
                         selecionaTarefa={selecionaTarefa}
                         key={item.id}
-                        tarefa={item.tarefa} tempo={item.tempo} selecionado={false} completado={false} id={''} />
+                        {...item}
+                    />
                 ))}
             </ul>
         </aside>

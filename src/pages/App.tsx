@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from 'react';
 import Form from '../components/Form';
 import ListComponent from '../components/List';
@@ -26,7 +25,7 @@ function App() {
         tarefas={tarefas}
         selecionaTarefa={selecionaTarefa}
       />
-      <Timer />
+      <Timer selecionado={selecionado} />
     </div>
   );
 }
