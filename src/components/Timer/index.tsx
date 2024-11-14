@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ITarefa from "../../types/tarefa"
 import Button from "../Button"
 import Clock from "./Clock"
@@ -9,14 +9,14 @@ interface Props {
     selecionado: ITarefa | undefined
 }
 
-
-function TimerComponent({ selecionado }: Props) {
-
+export default function TimerComponent({ selecionado }: Props) {
     const [tempo, setTempo] = useState<number>();
 
-    if (selecionado?.tempo) {
-        setTempo(tempoParaSegundos(selecionado?.tempo));
-    }
+    useEffect(() => {
+        if (selecionado?.tempo) {
+            setTempo(tempoParaSegundos(selecionado.tempo));
+        }
+    }, [selecionado])
 
     return (
         <div className={style.cronometro}>
@@ -25,9 +25,7 @@ function TimerComponent({ selecionado }: Props) {
             <div className={style.relogioWrapper}>
                 <Clock />
             </div>
-            <Button textButton='Iniciar' onClick={() => { }} />
+            <Button textButton='Iniciar' onClick={() => { console.log('Tentativa'); }} />
         </div>
     )
 }
-
-export default TimerComponent
