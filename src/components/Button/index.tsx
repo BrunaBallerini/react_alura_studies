@@ -1,11 +1,15 @@
 import style from './Button.module.scss'
 
-function Button(props: { textButton: any; onClick: any; }) {
-    const { textButton, onClick } = props;
+interface Props {
+    type?: "button" | "submit" | "reset" | undefined,
+    onClick?: () => void,
+    children?: React.ReactNode
+}
 
+function Button({ onClick, type, children }: Props) {
 
     return (
-        <button className={style.botao} onClick={onClick}>{textButton}</button>
+        <button type={type} className={style.botao} onClick={onClick}>{children}</button>
     )
 }
 

@@ -25,7 +25,7 @@ function Form({ setTarefas }: { setTarefas: React.Dispatch<React.SetStateAction<
     }
 
     return (
-        <form className={style.novaTarefa}>
+        <form className={style.novaTarefa} onSubmit={adicionarTarefa}>
             <div className={style.inputContainer}>
                 <label htmlFor="tarefa">Adicione um novo estudo</label>
                 <input
@@ -52,10 +52,9 @@ function Form({ setTarefas }: { setTarefas: React.Dispatch<React.SetStateAction<
                     required
                 />
             </div>
-            <Button
-                textButton="Adicionar"
-                onClick={adicionarTarefa}
-            />
+            <Button type="submit">
+                Adicionar
+            </Button>
         </form>
     )
 }
