@@ -6,10 +6,11 @@ import style from './Timer.module.scss'
 import { tempoParaSegundos } from '../../common/utils/time';
 
 interface Props {
-    selecionado: ITarefa | undefined
+    selecionado: ITarefa | undefined,
+    finalizarTarefa: () => void
 }
 
-export default function TimerComponent({ selecionado }: Props) {
+export default function TimerComponent({ selecionado, finalizarTarefa }: Props) {
     const [tempo, setTempo] = useState<number>();
 
     useEffect(() => {
@@ -18,14 +19,26 @@ export default function TimerComponent({ selecionado }: Props) {
         }
     }, [selecionado])
 
+    function regressiva(contador: number = 0) {
+        setTimeout(() => {
+            if (contador > 0) {
+                setTempo(contador - 1);
+                return regressiva(contador - 1);
+            }
+            finalizarTarefa();
+        }, 1000)
+    }
+
     return (
         <div className={style.cronometro}>
             <p className={style.titulo}>Escolha um card e inicie o Cronômetro</p>
             Tempo: {tempo}
             <div className={style.relogioWrapper}>
-                <Clock />
+                <Clock tempo={tempo} />
             </div>
-            <Button textButton='Iniciar' onClick={() => { console.log('Tentativa'); }} />
+            <Button onClick={() => regressiva(tempo)}>
+                Iniciar
+            </Button>
         </div>
     )
 }
